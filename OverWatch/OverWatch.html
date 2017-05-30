@@ -5,6 +5,40 @@
 	<title>海报画廊</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<style type="text/css">
+	#loading{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:100;
+    top:0;
+    left:0;
+    background:#444;
+}
+.loading {
+    width: 80px;
+    height: 80px;
+    background-color: rgb(8, 166, 205);
+    margin: 250px auto;
+    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+@-webkit-keyframes rotateplane {
+    0% { -webkit-transform: perspective(120px) }
+    50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+    100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+@keyframes rotateplane {
+    0% {
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    } 50% {
+          transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+          -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+      } 100% {
+            transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+            -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+        }
+}
 		html,body{height:100%;}
 		per{
 			perspective: 800px;
@@ -175,6 +209,9 @@
 	</style>
 </head>
 <body onselectstart="return false">
+<div id="loading">
+	<div class="loading"></div>
+</div>
 	<div id="warp" class="wrap">
 		<!-- 负责平移，旋转 -->
 		<div class="photo photo-front" onclick="turn(this)" id="photo_{{index}}">
@@ -192,6 +229,10 @@
 	</div>
 	<script type="text/javascript" src="imgs/data.js"></script>
 	<script type="text/javascript">
+	window.onload=function(){
+        document.getElementById("loading").style.display="none";
+        addPhotos();
+    };
 		//通用函数
 		function g(selector){
 			var method = selector.substr(0,1) =='.' ? 'getElementsByClassName':'getElementById';
@@ -232,7 +273,7 @@
 			rsort(random([0,data.length]));
 		}
 
-		addPhotos();
+		
 
 		//计算左右分区的范围
 		function range(){
