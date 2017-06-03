@@ -4,6 +4,9 @@
 	<meta charset="UTF-8">
 	<title>海报画廊</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="layer.css">
+	<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="layer.js"></script>
 	<style type="text/css">
 	#loading{
     position:fixed;
@@ -206,6 +209,9 @@
 			-webkit-transform: rotateY(-180deg);
 			background: #555;
 		}
+		/*你的名字**/
+		
+
 	</style>
 </head>
 <body onselectstart="return false">
@@ -214,7 +220,7 @@
 </div>
 	<div id="warp" class="wrap">
 		<!-- 负责平移，旋转 -->
-		<div class="photo photo-front" onclick="turn(this)" id="photo_{{index}}">
+		<div class="photo photo-front" onclick="show(this)" id="photo_{{index}}">
 			<!-- 负责翻转 -->
 			<div class="photo-wrap">
 				<div class="side side-front">
@@ -387,6 +393,17 @@
 			},800);
 			
 			return elem.className = cls;
+		}
+		function show(e){
+			layer.open({
+      			type: 2,
+      			title: '',
+      			shadeClose: true,
+      			shade: true,
+      			maxmin: true, //开启最大化最小化按钮
+      			area: ['100%', '100%'],
+      			content: 'name.html'
+    });
 		}
 	</script>
 </body>

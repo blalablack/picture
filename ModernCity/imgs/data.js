@@ -5,8 +5,8 @@ var data = [
 		"img":"1.jpg"
 	},
 	{
-		"caption":"孤独发光的灯",
-		"desc":"When lofty trees I see barren of leaves,Which erst from heat did canopy the herd,And summer's green, all girded up in sheaves,Born on the bier with white and bristly beard;",
+		"caption":"你的名字",
+		"desc":"重要的人，不能忘的人，决不想忘记的人，是谁？是谁？",
 		"img":"2.jpg"
 	},
 	{
